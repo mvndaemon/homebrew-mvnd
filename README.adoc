@@ -1,6 +1,6 @@
 = Homebrew tap for mvnd
 
-This is a homebrew tap for https://github.com/mvndaemon/mvnd[`mvnd` - the Maven Daemon]
+This is a homebrew tap for https://github.com/mvndaemon/mvnd[`mvnd`, the Maven Daemon].
 
 Tap and install with
 
