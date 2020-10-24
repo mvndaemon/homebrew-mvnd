@@ -26,7 +26,7 @@ class Mvnd < Formula
     end
 
     daemon = var + 'run/mvnd'
-    FileUtils.mkdir "#{daemon}", mode: 0775 unless daemon.exist?
+    FileUtils.mkdir_p "#{daemon}", mode: 0775 unless daemon.exist?
     FileUtils.ln_sf(daemon, libexec + 'daemon')
   end
 
