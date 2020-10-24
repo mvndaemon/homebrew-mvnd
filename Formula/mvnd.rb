@@ -13,7 +13,7 @@ class Mvnd < Formula
 
   bottle :unneeded
 
-#  depends_on "openjdk"
+  depends_on "openjdk"
 
   def install
     libexec.install Dir["*"]
