@@ -33,13 +33,13 @@ sed -i "s|url \"[^\"]*\"|url \"${zipUrl}\"|" Formula/mvnd.rb
 sed -i "s|sha256 \"[^\"]*\"|sha256 \"${sha256}\"|" Formula/mvnd.rb
 sed -i "s|version \"[^\"]*\"|version \"${version}\"|" Formula/mvnd.rb
 
-if git diff-index --quiet HEAD --; then
-    echo "Nothing to commit"
-else
+if [ -n "$(git status --porcelain)" ]; then
     echo "Committing release ${version}"
     git config --global user.email "ppalaga@redhat.com"
     git config --global user.name "Peter Palaga"
     git add -A
     git commit -m "Release ${version}"
     git push upstream master
+else
+    echo "Nothing to commit"
 fi
