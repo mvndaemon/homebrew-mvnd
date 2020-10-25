@@ -37,6 +37,8 @@ if git diff-index --quiet HEAD --; then
     echo "Nothing to commit"
 else
     echo "Committing release ${version}"
+    git config --global user.email "ppalaga@redhat.com"
+    git config --global user.name "Peter Palaga"
     git add -A
     git commit -m "Release ${version}"
     git push upstream master
