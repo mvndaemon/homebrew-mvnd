@@ -1,11 +1,11 @@
 class Mvnd < Formula
   desc "Maven Daemon"
   homepage "https://github.com/mvndaemon/mvnd"
-  url "https://github.com/mvndaemon/mvnd/releases/download/0.0.11/mvnd-0.0.11-darwin-amd64.zip"
-  sha256 "815f609f63be37b13738b9271e47d7cdf589eee9a4b0bdce38eddf6b0190d1ec"
+  url "https://github.com/mvndaemon/mvnd/releases/download/0.0.12/mvnd-0.0.12-darwin-amd64.zip"
+  sha256 "a715c0cc99b40bafda53005543c9b611314b231818f1c2cb83c4474445e48e56"
   license "Apache-2.0"
   head "https://github.com/mvndaemon/mvnd.git"
-  version "0.0.11"
+  version "0.0.12"
 
   livecheck do
     url :stable
