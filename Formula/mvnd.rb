@@ -2,6 +2,7 @@ class Mvnd < Formula
   desc "Maven Daemon"
   homepage "https://github.com/mvndaemon/mvnd"
   license "Apache-2.0"
+  head "https://github.com/mvndaemon/mvnd.git"
   version "0.1.1"
 
   livecheck do
