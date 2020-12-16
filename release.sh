@@ -20,18 +20,21 @@ set -e
 #set -x
 
 latestReleaseInfo="$(curl --silent "https://api.github.com/repos/mvndaemon/mvnd/releases/latest")"
-version="$(echo "${latestReleaseInfo}" | grep -Po '"tag_name": "\K.*?(?=")')"
-zipUrl="https://github.com/mvndaemon/mvnd/releases/download/${version}/mvnd-${version}-darwin-amd64.zip"
-sha256="$(curl -L --silent "${zipUrl}.sha256")"
+version="$(echo "${latestReleaseInfo}" | grep tag_name | perl -lpe 's/.*"tag_name": "(.*)".*/$1/g')"
+darwinZipUrl="https://github.com/mvndaemon/mvnd/releases/download/${version}/mvnd-${version}-darwin-amd64.zip"
+darwinSha256="$(curl -L --silent "${darwinZipUrl}.sha256")"
+linuxZipUrl="https://github.com/mvndaemon/mvnd/releases/download/${version}/mvnd-${version}-linux-amd64.zip"
+linuxSha256="$(curl -L --silent "${linuxZipUrl}.sha256")"
 
 echo "Updating Formula/mvnd.rb with"
 echo "version: ${version}"
-echo "url: ${zipUrl}"
-echo "sha256: ${sha256}"
+echo "darwin-url: ${darwinZipUrl}"
+echo "darwin-sha256: ${darwinSha256}"
+echo "linux-url: ${linuxZipUrl}"
+echo "linux-sha256: ${linuxSha256}"
 
-sed -i "s|url \"[^\"]*\"|url \"${zipUrl}\"|" Formula/mvnd.rb
-sed -i "s|sha256 \"[^\"]*\"|sha256 \"${sha256}\"|" Formula/mvnd.rb
-sed -i "s|version \"[^\"]*\"|version \"${version}\"|" Formula/mvnd.rb
+perl -i -0pe 's|(on_macos do\n\s+url )\"([^\"]+)\"(\n\s+sha256 )\"([^\"]+)\"|$1\"'${darwinZipUrl}'\"$3\"'${darwinSha256}'\"|g' Formula/mvnd.rb
+perl -i -0pe 's|(on_linux do\n\s+url )\"([^\"]+)\"(\n\s+sha256 )\"([^\"]+)\"|$1\"'${linuxZipUrl}'\"$3\"'${linuxSha256}'\"|g' Formula/mvnd.rb
 
 if [ -n "$(git status --porcelain)" ]; then
     echo "Committing release ${version}"
