@@ -1,10 +1,7 @@
 class Mvnd < Formula
   desc "Maven Daemon"
   homepage "https://github.com/mvndaemon/mvnd"
-  url "https://github.com/mvndaemon/mvnd/releases/download/0.1.1/mvnd-0.1.1-darwin-amd64.zip"
-  sha256 "5dedabf34ff2e8fe131c7754b3d4e5629b0cfc1ecb7d55ab9df7220b11f639f8"
   license "Apache-2.0"
-  head "https://github.com/mvndaemon/mvnd.git"
   version "0.1.1"
 
   livecheck do
@@ -15,8 +12,20 @@ class Mvnd < Formula
 
   depends_on "openjdk"
 
+  resource "mvndzip" do
+    on_macos do
+      url "https://github.com/mvndaemon/mvnd/releases/download/0.1.1/mvnd-0.1.1-darwin-amd64.zip"
+      sha256 "5dedabf34ff2e8fe131c7754b3d4e5629b0cfc1ecb7d55ab9df7220b11f639f8"
+    end
+
+    on_linux do
+      url "https://github.com/mvndaemon/mvnd/releases/download/0.1.1/mvnd-0.1.1-linux-amd64.zip"
+      sha256 "5b5303950ba109cec2807504cf2e2055365def63cd8e06d684668ca438bdbc75"
+    end
+  end
+
   def install
-    libexec.install Dir["*"]
+    libexec.install resource("mvndzip")
 
     Pathname.glob("#{libexec}/bin/*") do |file|
       next if file.directory?
