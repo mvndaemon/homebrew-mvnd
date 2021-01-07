@@ -15,13 +15,13 @@ class Mvnd < Formula
 
   resource "mvndzip" do
     on_macos do
-      url "https://github.com/mvndaemon/mvnd/releases/download/0.2.0/mvnd-0.2.0-darwin-amd64.zip"
-      sha256 "a5b193dfc59393cb4b3c14021daf090f4f3c19355e70f065002346c20fdadb54"
+      url "https://github.com/mvndaemon/mvnd/releases/download/0.3.0/mvnd-0.3.0-darwin-amd64.zip"
+      sha256 "bc3b6d6e78291620b78d49d22ce797cec324560b1062120e62d492c4a6c536e9"
     end
 
     on_linux do
-      url "https://github.com/mvndaemon/mvnd/releases/download/0.2.0/mvnd-0.2.0-linux-amd64.zip"
-      sha256 "5fc9e07ecbbbe17e7cea480b70d77a16530fba7c869f0e7bd2a0a718409e4b89"
+      url "https://github.com/mvndaemon/mvnd/releases/download/0.3.0/mvnd-0.3.0-linux-amd64.zip"
+      sha256 "3f161f6914c6120fa1df7668aac1823f2099c108b1a70210f2217fdae8c13c75"
     end
   end
 
