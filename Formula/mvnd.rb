@@ -3,6 +3,8 @@ class Mvnd < Formula
   homepage "https://github.com/mvndaemon/mvnd"
   license "Apache-2.0"
   version "0.1.1"
+  url "file:///dev/null"
+  sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
   livecheck do
     url :stable
