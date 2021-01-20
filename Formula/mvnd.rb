@@ -3,8 +3,14 @@ class Mvnd < Formula
   homepage "https://github.com/mvndaemon/mvnd"
   license "Apache-2.0"
   version "0.1.1"
-  url "file:///dev/null"
-  sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  on_macos do
+    url "https://github.com/mvndaemon/mvnd/releases/download/0.3.0/mvnd-0.3.0-darwin-amd64.zip"
+    sha256 "bc3b6d6e78291620b78d49d22ce797cec324560b1062120e62d492c4a6c536e9"
+  end
+  on_linux do
+    url "https://github.com/mvndaemon/mvnd/releases/download/0.3.0/mvnd-0.3.0-linux-amd64.zip"
+    sha256 "3f161f6914c6120fa1df7668aac1823f2099c108b1a70210f2217fdae8c13c75"
+  end
 
   livecheck do
     url :stable
@@ -12,22 +18,18 @@ class Mvnd < Formula
 
   bottle :unneeded
 
-  depends_on "openjdk"
-
-  resource "mvndzip" do
-    on_macos do
-      url "https://github.com/mvndaemon/mvnd/releases/download/0.3.0/mvnd-0.3.0-darwin-amd64.zip"
-      sha256 "bc3b6d6e78291620b78d49d22ce797cec324560b1062120e62d492c4a6c536e9"
-    end
-
-    on_linux do
-      url "https://github.com/mvndaemon/mvnd/releases/download/0.3.0/mvnd-0.3.0-linux-amd64.zip"
-      sha256 "3f161f6914c6120fa1df7668aac1823f2099c108b1a70210f2217fdae8c13c75"
-    end
-  end
+  depends_on "openjdk" => :recommended
 
   def install
-    libexec.install resource("mvndzip")
+    # Remove windows files
+    rm_f Dir["bin/*.cmd"]
+
+    # Replace mvnd by using mvnd.sh
+    if Hardware::CPU.arm?
+      mv "bin/mvnd.sh", "bin/mvnd", force: true
+    end
+
+    libexec.install Dir["*"]
 
     Pathname.glob("#{libexec}/bin/*") do |file|
       next if file.directory?
