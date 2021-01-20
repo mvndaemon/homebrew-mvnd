@@ -2,7 +2,7 @@ class Mvnd < Formula
   desc "Maven Daemon"
   homepage "https://github.com/mvndaemon/mvnd"
   license "Apache-2.0"
-  version "0.1.1"
+  version "0.3.0"
   on_macos do
     url "https://github.com/mvndaemon/mvnd/releases/download/0.3.0/mvnd-0.3.0-darwin-amd64.zip"
     sha256 "bc3b6d6e78291620b78d49d22ce797cec324560b1062120e62d492c4a6c536e9"

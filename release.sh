@@ -35,6 +35,7 @@ echo "linux-sha256: ${linuxSha256}"
 
 perl -i -0pe 's|(on_macos do\n\s+url )\"([^\"]+)\"(\n\s+sha256 )\"([^\"]+)\"|$1\"'${darwinZipUrl}'\"$3\"'${darwinSha256}'\"|g' Formula/mvnd.rb
 perl -i -0pe 's|(on_linux do\n\s+url )\"([^\"]+)\"(\n\s+sha256 )\"([^\"]+)\"|$1\"'${linuxZipUrl}'\"$3\"'${linuxSha256}'\"|g' Formula/mvnd.rb
+perl -i -0pe 's|(version )"([^\"]+)"|$1\"'${version}'\"|g' Formula/mvnd.rb
 
 if [ -n "$(git status --porcelain)" ]; then
     echo "Committing release ${version}"
