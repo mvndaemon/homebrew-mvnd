@@ -16,8 +16,6 @@ class Mvnd < Formula
     url :stable
   end
 
-  bottle :unneeded
-
   depends_on "openjdk" => :recommended
 
   def install
