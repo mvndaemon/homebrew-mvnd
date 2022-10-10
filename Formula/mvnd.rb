@@ -4,11 +4,17 @@ class Mvnd < Formula
   license "Apache-2.0"
   version "0.8.2"
   on_macos do
-    url "https://dist.apache.org/repos/dist/release/maven/mvnd/0.8.2/maven-mvnd-0.8.2-darwin-amd64.zip"
-    sha256 "87b430637038e0700af3e1a22bc4a05594d18e5e3624f1700de7f5e8fd629ce6"
+    on_intel do
+      url "https://downloads.apache.org/maven/mvnd/0.8.2/maven-mvnd-0.8.2-darwin-amd64.zip"
+      sha256 "87b430637038e0700af3e1a22bc4a05594d18e5e3624f1700de7f5e8fd629ce6"
+    end
+    on_arm do
+      url "https://downloads.apache.org/maven/mvnd/0.8.2/maven-mvnd-0.8.2-darwin-aarch64.zip"
+      sha256 "48c0bcb1f44ed416c7c42bec6d19c8df2ef8af539a67b5b3f40f8d1e030b8c07"
+    end
   end
   on_linux do
-    url "https://dist.apache.org/repos/dist/release/maven/mvnd/0.8.2/maven-mvnd-0.8.2-linux-amd64.zip"
+    url "https://downloads.apache.org/maven/mvnd/0.8.2/maven-mvnd-0.8.2-linux-amd64.zip"
     sha256 "a78b8c107cc7266b7b831d75eadcca4831846405274479b50c5e5ab6a1b5ec24"
   end
 
@@ -21,11 +27,6 @@ class Mvnd < Formula
   def install
     # Remove windows files
     rm_f Dir["bin/*.cmd"]
-
-    # Replace mvnd by using mvnd.sh
-    if Hardware::CPU.arm?
-      mv "bin/mvnd.sh", "bin/mvnd", force: true
-    end
 
     libexec.install Dir["*"]
 
