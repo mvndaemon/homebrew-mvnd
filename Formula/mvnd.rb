@@ -5,12 +5,12 @@ class Mvnd < Formula
   version "0.9.0"
   on_macos do
     on_intel do
-      url "https://downloads.apache.org/maven/mvnd/0.8.2/maven-mvnd-0.8.2-darwin-amd64.zip"
-      sha256 "87b430637038e0700af3e1a22bc4a05594d18e5e3624f1700de7f5e8fd629ce6"
+      url "https://downloads.apache.org/maven/mvnd/0.9.0/maven-mvnd-0.9.0-darwin-amd64.zip"
+      sha256 "4a8b22eb37c528aa7fecf20b37e6d1975fa107aa2f4cc375ea071048910a83d7"
     end
     on_arm do
-      url "https://downloads.apache.org/maven/mvnd/0.8.2/maven-mvnd-0.8.2-darwin-aarch64.zip"
-      sha256 "48c0bcb1f44ed416c7c42bec6d19c8df2ef8af539a67b5b3f40f8d1e030b8c07"
+      url "https://downloads.apache.org/maven/mvnd/0.9.0/maven-mvnd-0.9.0-darwin-aarch64.zip"
+      sha256 "754bf38de73f79a478f5a39fb7cbec1cb9765eedbd0c6f6171197a10b48cb09c"
     end
   end
   on_linux do
