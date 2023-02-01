@@ -2,7 +2,7 @@ class Mvnd < Formula
   desc "Maven Daemon"
   homepage "https://github.com/mvndaemon/mvnd"
   license "Apache-2.0"
-  version "0.8.2"
+  version "0.9.0"
   on_macos do
     on_intel do
       url "https://downloads.apache.org/maven/mvnd/0.8.2/maven-mvnd-0.8.2-darwin-amd64.zip"
@@ -14,8 +14,8 @@ class Mvnd < Formula
     end
   end
   on_linux do
-    url "https://downloads.apache.org/maven/mvnd/0.8.2/maven-mvnd-0.8.2-linux-amd64.zip"
-    sha256 "a78b8c107cc7266b7b831d75eadcca4831846405274479b50c5e5ab6a1b5ec24"
+    url "https://downloads.apache.org/maven/mvnd/0.9.0/maven-mvnd-0.9.0-linux-amd64.zip"
+    sha256 "5d33a9a5964905381df1e132a1a4c0cc6e4b7c72f75daa2d799181b68091fe9f"
   end
 
   livecheck do
