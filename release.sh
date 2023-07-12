@@ -19,11 +19,26 @@
 set -e
 #set -x
 
-latestReleaseInfo="$(curl --silent "https://api.github.com/repos/mvndaemon/mvnd/releases/latest")"
+function extract_platform_url
+{
+    latest_version_json="$1"
+    platform_search="$2"
+    download_urls=$(echo "$latest_version_json" | jq --arg search "$platform_search" -r '.assets[] | select(.browser_download_url | contains($search)) | .browser_download_url')
+
+    # download_urls can hold many versions, for instance a search on 'darwin-amd64.zip' returns:
+    # https://github.com/apache/maven-mvnd/releases/download/1.0-m6/maven-mvnd-1.0-m6-m39-darwin-amd64.zip
+    # https://github.com/apache/maven-mvnd/releases/download/1.0-m6/maven-mvnd-1.0-m6-m40-darwin-amd64.zip
+    # The first result in descending order is assumed to be the latest build of the latest version.
+    echo "$download_urls" | sort --reverse | head -n 1
+}
+
+# jq returns the following error when encountering escaped characters: "parse error: Invalid string: control characters from U+0000 through U+001F must be escaped"
+# As a workaround, we pipe GitHub's JSON to sed in order to remove backslashes.
+latestReleaseInfo="$(curl --location --silent "https://api.github.com/repos/mvndaemon/mvnd/releases/latest" | sed 's.\\..g')"
 version="$(echo "${latestReleaseInfo}" | grep tag_name | perl -lpe 's/.*"tag_name": "(.*)".*/$1/g')"
-darwinZipUrl="https://github.com/mvndaemon/mvnd/releases/download/${version}/mvnd-${version}-darwin-amd64.zip"
+darwinZipUrl=$(extract_platform_url "$latestReleaseInfo" "darwin-amd64.zip")
 darwinSha256="$(curl -L --silent "${darwinZipUrl}.sha256")"
-linuxZipUrl="https://github.com/mvndaemon/mvnd/releases/download/${version}/mvnd-${version}-linux-amd64.zip"
+linuxZipUrl=$(extract_platform_url "$latestReleaseInfo" "linux-amd64.zip")
 linuxSha256="$(curl -L --silent "${linuxZipUrl}.sha256")"
 
 echo "Updating Formula/mvnd.rb with"
