@@ -1,4 +1,4 @@
-class Mvnd < Formula
+class MvndAT1 < Formula
   desc "Maven Daemon"
   homepage "https://github.com/mvndaemon/mvnd"
   license "Apache-2.0"
