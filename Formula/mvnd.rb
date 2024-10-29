@@ -28,6 +28,8 @@ class Mvnd < Formula
     # Remove windows files
     rm_f Dir["bin/*.cmd"]
 
+    bash_completion.install "bin/mvnd-bash-completion.bash"
+
     libexec.install Dir["*"]
 
     Pathname.glob("#{libexec}/bin/*") do |file|
