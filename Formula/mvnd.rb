@@ -1,6 +1,6 @@
 class Mvnd < Formula
-  desc "Maven Daemon"
-  homepage "https://github.com/mvndaemon/mvnd"
+  desc "Apache Maven Daemon"
+  homepage "https://github.com/apache/maven-mvnd"
   license "Apache-2.0"
   version "2.0.0-rc-1"
   on_macos do
