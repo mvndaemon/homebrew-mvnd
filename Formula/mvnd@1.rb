@@ -2,20 +2,20 @@ class MvndAT1 < Formula
   desc "Apache Maven Daemon"
   homepage "https://github.com/apache/maven-mvnd"
   license "Apache-2.0"
-  version "1.0.3"
+  version "1.0.5"
   on_macos do
     on_intel do
-      url "https://downloads.apache.org/maven/mvnd/1.0.3/maven-mvnd-1.0.3-darwin-amd64.zip"
-      sha256 "ef2aa64f6db5811af56172a29343a65c59b4c0d49fb0dc6f116b1a25b6648ce6"
+      url "https://downloads.apache.org/maven/mvnd/1.0.5/maven-mvnd-1.0.5-darwin-amd64.zip"
+      sha256 "95e12908f24fd018ee41e5d31fe43a86340877e9b937651732e310b250411de3"
     end
     on_arm do
-      url "https://downloads.apache.org/maven/mvnd/1.0.3/maven-mvnd-1.0.3-darwin-aarch64.zip"
-      sha256 "6584b99a97b447d298e27e71dcdf5838d458b99fcb87d6105a8b57c8181cfc51"
+      url "https://downloads.apache.org/maven/mvnd/1.0.5/maven-mvnd-1.0.5-darwin-aarch64.zip"
+      sha256 "bd98f847478de20158242f6cce6d9bc6cb6e3e9ba7b932237f0122f52a8de5a3"
     end
   end
   on_linux do
-    url "https://downloads.apache.org/maven/mvnd/1.0.3/maven-mvnd-1.0.3-linux-amd64.zip"
-    sha256 "3090bd3c61cb6af4fd7fe84bcec3d914104f26d02ff32fe881fc73c5bd1746c9"
+    url "https://downloads.apache.org/maven/mvnd/1.0.5/maven-mvnd-1.0.5-linux-amd64.zip"
+    sha256 "4a8d83bbf7757a1132c4116cfeea69aaa93b341b8253344ff42b33001f281830"
   end
 
   livecheck do
